@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ChronometrePage extends StatelessWidget {
-  const ChronometrePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      // On n'a pas besoin d'un autre AppBar ici car il est déjà dans le widget parent
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Chronomètre',
+            Text(
+              "Home",
               style: TextStyle(fontSize: 24),
             ),
-            // Ajoutez ici les widgets pour votre chronomètre
+            // Ajoutez ici d'autres widgets pour votre page d'accueil
           ],
         ),
       ),

@@ -2,16 +2,16 @@
 // https://github.com/kimmanwky/Motion-Tab-Bar/blob/master/example/main.dart
 import 'package:flutter/material.dart';
 
-import 'package:fitrack/motion-tab-controller.dart';
-import 'package:fitrack/screen/home_page.dart';
-import 'package:fitrack/screen/chronometre_page.dart';
+import 'package:fitrack/NavigationBarComponent.dart';
+import 'package:fitrack/screen/homePage.dart';
+import 'package:fitrack/screen/timerPage.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // this widget = root of app
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,72 +61,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: TabBarView(
         controller: _tabController,
         children: const [
-          // Vos pages ici
+          // Les pages
           HomePage(),
-          ChronometrePage(),
+          TimerPage(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _tabController.index,
-        onTap: (index) {
-          setState(() {
-            _tabController.index = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Accueil',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.timer),
-            label: 'Chronomètre',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-
-class MainPageContentComponent extends StatelessWidget {
-  const MainPageContentComponent({
-    required this.title,
-    required this.controller,
-    Key? key,
-  }) : super(key: key);
-
-  final String title;
-  final MotionTabBarController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 50),
-          const Text('Go to "X" page programmatically'),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () => controller.index = 0,
-            child: const Text('Dashboard Page'),
-          ),
-          ElevatedButton(
-            onPressed: () => controller.index = 1,
-            child: const Text('Home Page'),
-          ),
-          ElevatedButton(
-            onPressed: () => controller.index = 2,
-            child: const Text('Profile Page'),
-          ),
-          ElevatedButton(
-            onPressed: () => controller.index = 3,
-            child: const Text('Settings Page'),
-          ),
-        ],
-      ),
+      bottomNavigationBar: NavigationBarComponent(tabController: _tabController),
     );
   }
 }
