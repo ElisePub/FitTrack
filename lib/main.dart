@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Motion Tab Bar Sample',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       home: const MyHomePage(title: 'Home'),
     );
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({super.key, this.title});
 
   final String? title;
 
@@ -39,9 +39,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    // Initialisation du contrôleur avec 2 onglets (HomePage et Chronomètre)
+    // Initialisation du contrôleur avec 3 onglets (HomePage, Stats et Chronomètre)
     _tabController = TabController(
-      length: 2,  // nombre d'onglets
+      length: 3,  // nombre d'onglets
       vsync: this,
     );
   }
@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         controller: _tabController,
         children: const [
           // Les pages
+          HomePage(),
           HomePage(),
           TimerPage(),
         ],
